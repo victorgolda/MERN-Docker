@@ -1,0 +1,69 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    
+        {
+            "name": "Server: Attach to Node", // Un nombre cualquiera
+            "type": "node",
+            "request": "attach",
+            "remoteRoot": "/usr/src/app", // Ruta dentro del Docker Container
+            "localRoot": "${workspaceFolder}/server", // Ruta local
+            "address": "localhost", // Para hacer testing local
+            "port": 9229, // Puerto default del debugger
+            "protocol": "inspector", // Tipo de protocolo
+            "restart": true // Cada que hagamos cambio al servidor nodemon va hacer perder la conexón al debugger por eso hay que reiniciar automáticamente.
+        },
+        {
+            "name": "Client: Launch Browser Chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "port": 9222,
+            "webRoot": "${workspaceRoot}/client/src",
+            "sourceMapPathOverrides": {
+                "/app/src/*": "${webRoot}/*"
+            },
+            "runtimeArgs": [
+            "--remote-debugging-port=9222"
+            ]
+        },
+        {
+            "name": "Client: Launch Browser EdgeChromium",
+            "type": "msedge",
+            "request": "launch",
+            "url": "http://localhost:3000",
+            "port": 9222,
+            "webRoot": "${workspaceRoot}/client/src",
+            "sourceMapPathOverrides": {
+                "/app/src/*": "${webRoot}/*"
+            },
+            "runtimeArgs": [
+            "--remote-debugging-port=9222"
+            ]
+        },
+/*         {
+            "name": "Client: Attach to Chrome",
+            "port": 9222,
+            "request": "attach",
+            "type": "chrome",
+            "urlFilter": "http://localhost:3000/*",
+            "localRoot": "${workspaceRoot}/client/src",
+            "webRoot": "${workspaceRoot}/client/src",
+            "sourceMapPathOverrides": {
+                "/app/src/*": "${webRoot}/*"
+            }
+        },
+        {
+            "name": "Client: Attach to EdgeChromium",
+            "port": 9222,
+            "request": "attach",
+            "type": "msedge",
+            "urlFilter": "http://localhost:3000/*",
+            "localRoot": "${workspaceRoot}/client/src",
+            "webRoot": "${workspaceRoot}/client/src",
+            "sourceMapPathOverrides": {
+                "/app/src/*": "${webRoot}/*"
+            }
+        } */
+    ]
+}

@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    image: ${APP_NAME}-server
+    container_name: ${APP_NAME}-server
+    networks:
+      - app-network
+    environment:
+      - TZ=America/Monterrey         
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: ${APP_NAME}-client
+    container_name: ${APP_NAME}-client
+    command: npm start
+    volumes:
+      - ./client/:/app
+      - /app/node_modules
+    ports:
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    networks:
+      - app-network
+    depends_on:
+      - server
+    environment:
+      - TZ=America/Monterrey
+      - REACT_APP_API_URL= http://${SERVER_HOST}:${SERVER_PORT}/         
+networks:
+    app-network:
+        driver: bridge
+volumes:
+    data-volume:
+    node_modules:
+    web-root:
+      driver: local
