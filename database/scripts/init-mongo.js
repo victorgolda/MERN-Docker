@@ -1,24 +1,17 @@
-//require('dotenv').config()
-
-print('mongo init start --------------------')
-
+var MONGO_USER = process.env.MONGO_USER
+var MONGO_PASSWORD = process.env.MONGO_PASSWORD
+var MONGO_DB = process.env.MONGO_INITDB_DATABASE
+var MONGO_INITDB_ROOT_USERNAME = process.env.MONGO_INITDB_ROOT_USERNAME
+var MONGO_INITDB_ROOT_PASSWORD = process.env.MONGO_INITDB_ROOT_PASSWORD
 db = db.getSiblingDB('admin')
-// move to the admin db - always created in Mongo
-db.auth('root', '84Qsuj92bAS5481!!!.A')
-// log as root admin if you decided to authenticate in your docker-compose file...
-//db = db.getSiblingDB(process.env.MONGO_DB)
-// create and move to your new database
-db.createUser({
-  user: 'agile',
-  pwd: 'nuhs78$smis.1SFD',
+db.auth(MONGO_INITDB_ROOT_USERNAME, MONGO_INITDB_ROOT_PASSWORD)
+var insert = db.createUser({
+  user: MONGO_USER,
+  pwd: MONGO_PASSWORD,
   roles: [
     {
       role: 'dbOwner',
-      db: 'agile'
+      db: MONGO_DB
     }
   ]
 })
-// user created
-//db.createCollection('collection_test')
-
-print('mongo init end --------------------')

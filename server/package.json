@@ -1,10 +1,10 @@
 {
-  "name": "trellosync-api",
+  "name": "appname-api",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start-dev": "nodemon --watch . -e js --exec node --inspect=0.0.0.0 ./bin/www -L",
-    "start-prod": "pm2 start bin/www --name trellosync-api"
+    "start-prod": "pm2 start bin/www --name appName-api"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -15,7 +15,6 @@
     "https-proxy-agent": "^5.0.0",
     "jade": "~1.11.0",
     "lodash": "^4.17.21",
-    "moment-timezone": "^0.5.34",
     "mongoose": "^6.0.13",
     "morgan": "~1.9.1",
     "node-fetch": "^2.6.0",
