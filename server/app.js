@@ -1,14 +1,23 @@
 var createError = require('http-errors')
+var bodyParser = require('body-parser')
 var express = require('express')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 var mongoose = require('mongoose')
 var indexRouter = require('./routes/index')
-
 var cors = require('cors')
 const app = express()
-app.use(cors())
+var corsOptions = {
+  credentials: true,
+  //origin: ["https://[production-domain.com]", "http://localhost:3000"]
+  origin: ['http://localhost:3000']
+}
+app.use(cookieParser())
+app.use(cors(corsOptions))
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }))
+app.use(express.json())
 
 mongoose.connect(
   'mongodb://' +

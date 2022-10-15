@@ -5,13 +5,10 @@
 1.- Crear un archivo de variables en la carpeta raíz: .env
 2.- Modificar el archivo init-mongo.js donde coincidan las variables de entorno (.env) con las variables del archivo js.
 
-### `Variables de Entorno`
-
-React se ejecuta en el navegador. Primero construye un "Bundle" desde webpack hardcodeando todas las variables de entorno.
-https://stackoverflow.com/questions/55171870/changing-axios-baseurl-accessible-from-env-file-after-building-react-app
 
 ### `ENV File`
 
+APP_NAME=
 MONGO_INITDB_ROOT_USERNAME=
 MONGO_INITDB_ROOT_PASSWORD=
 MONGO_INITDB_DATABASE=
@@ -25,7 +22,7 @@ SERVER_REQUIRES_PROXY=
 SERVER_HTTP_PROXY=
 CLIENT_PORT=
 CLIENT_HOST=
-APP_NAME=
+
 
 ### `Explicación ENV File`
 

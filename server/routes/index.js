@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+//const { authorization } = require('../authentication/authorization')
 
-module.exports = router;
+module.exports = function (app) {
+  app.use(express.json())
+  //  app.use('/syncs/api/v1', authorization, syncsRoutes)
+}

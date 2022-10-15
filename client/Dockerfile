@@ -12,7 +12,7 @@ COPY package*.json ./
 
 ###  Installing dependencies
 
-RUN npm i --silent
+RUN yarn install
 
 ###  ENV VARS FOR WEBPACK
 
